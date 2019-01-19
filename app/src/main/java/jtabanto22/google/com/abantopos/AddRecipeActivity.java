@@ -208,7 +208,8 @@ public class AddRecipeActivity extends AppCompatActivity {
         }
 
         else{
-            showAlert("Please Select an Image","WARNING!");
+            View view =findViewById(R.id.recipelayout);
+            Snackbar.make(view, "SelectImageFirst", Snackbar.LENGTH_LONG).show();
         }
 
     }
@@ -256,6 +257,7 @@ public class AddRecipeActivity extends AppCompatActivity {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 try {
+                    filePath=result.getUri();
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), result.getUri());
 
                     // ((ImageView) findViewById(R.id.imageView)).setImageBitmap(bitmap);
